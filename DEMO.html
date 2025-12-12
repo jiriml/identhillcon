@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cs" style="font-family: sans-serif;">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body { font-size: 16px; }
+      @media (min-width: 768px) {
+        body { font-size: 18px; }
+      }
+      @media (min-width: 1200px) {
+        body { font-size: 20px; }
+      }
+
+      .gButton {
+        background-color: #278b27;
+        font-size: 100%;
+        border: 0;
+        border-radius: 3px;
+        color: #fcfcfc;
+        padding: 2px;
+        transition: transform 0.2s, background-color 0.2s;
+      }
+      .gButton:hover {
+        background-color: #1b701b;
+        transform: translateY(-3px);
+      }
+      .gInput {
+        font-size: 90%;
+        border: 1px solid #474747;
+        border-radius: 3px;
+        padding: 2px;
+      }
+
+    </style>
+    <title>DEMO of identhillcon generator 🖌️</title>
+  </head>
+  <body style="margin: 0; background-color: rgb(255, 255, 255);">
+
+    <div style="width: 100%; text-align: center;border-bottom: 2px solid #474747;"><h style="color: black; font-size: 200%; font-weight: normal;">Identhillcon generator</h></div>
+    <div style="width: 100%; text-align: center; padding-top: 30px;">
+      <canvas style="background-color: black; border: 2px solid #272727; width: min(25rem,80vw, 512px);" width="512" height="512" id="gCanvas"></canvas>
+      <div style="margin-top: 30px;"><input class="gInput" type="text" id="gInput"><button onclick="clickReact()" class="gButton">Generate</button></div>
+    </div>
+    <div style="position: absolute; bottom: 0; right: 0; font-size: 70%; padding: 12px;">Git repo at <a href="https://github.com/jiriml/identhillcon">github</a></div>
+
+    <script src="generator.js"></script>
+    <script>
+      let randomNumber = Math.floor(1000 * Math.random());
+      document.getElementById("gInput").value = String(randomNumber);
+      identhillconGenerator(String(randomNumber),document.getElementById("gCanvas"))
+
+      async function clickReact() {
+         await identhillconGenerator(document.getElementById("gInput").value,document.getElementById("gCanvas"));
+      }
+    </script>
+  </body>
+</html>

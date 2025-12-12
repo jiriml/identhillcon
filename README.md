@@ -1,2 +1,4 @@
-# identiconGen
+# identhillcon
 Side project of generating identicons.
+Uses SHA256 function and is written in javascript.
+Free to use.
